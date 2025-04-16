@@ -1,0 +1,2 @@
+curl -sS -kX GET --header 'Accept: application/json' -b access_token=`cat token.txt` 'https://www.arista.io/api/resources/inventory/v1/Device/all' | jq '.result.value | with_entries(select(.[])) | select(.streamingStatus=="STREAMING_STATUS_ACTIVE") | .hostname'
+curl -sS -kX GET --header 'Accept: application/json' 'https://www.arista.io/api/resources/inventory/v1/Device/all' -b access_token=`cat token.txt`
